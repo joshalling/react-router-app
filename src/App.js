@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import {Home} from './Home';
 import {Blog} from './Blog';
+import {BlogPost} from "./BlogPost";
 import {Media} from './Media';
 import './App.css';
 
@@ -26,7 +27,8 @@ class App extends Component {
                     </header>
 
                     <Route exact path="/" component={() => <Home />}/>
-                    <Route path="/blog" component={() => <Blog />}/>
+                    <Route exact path="/blog" component={({ match }) => <Blog match={match}/>}/>
+                    <Route path="/blog/:postId" component={({ match }) => <BlogPost match={match}/>}/>
                     <Route path="/media" component={() => <Media />}/>
                 </div>
             </Router>
